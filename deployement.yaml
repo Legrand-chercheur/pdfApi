@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mon-pdf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mon-api
+  template:
+    metadata:
+      labels:
+        app: mon-api
+    spec:
+      containers:
+        - name: mon-api
+          image: gcr.io/apitickets-401711/api_pdf
+          ports:
+            - containerPort: 8080
